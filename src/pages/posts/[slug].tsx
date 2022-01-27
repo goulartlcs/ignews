@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/react";
 import Head from "next/head";
+import { GetServerSideProps } from "next";
 import { RichText } from "prismic-dom";
 import { getPrismicClient } from "../../services/prismic";
 
@@ -35,7 +36,7 @@ export default function Post({ post }: PostProps) {
   );
 }
 
-export const getServerSideProps = async ({ req, params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
   const session = await getSession({ req });
   const { slug } = params;
 
