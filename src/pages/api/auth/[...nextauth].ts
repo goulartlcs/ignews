@@ -61,7 +61,7 @@ export default NextAuth({
         await fauna.query(
           q.If (
             q.Not (
-              q.Exists (
+               q.Exists (
                 q.Match (
                   q.Index ('user_by_email'),
                   q.Casefold (email)
@@ -86,5 +86,6 @@ export default NextAuth({
         return false;
       }
     },
-  }
+  },
+  secret: process.env.JWT_SECRET,
 })
